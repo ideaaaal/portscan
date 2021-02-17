@@ -80,6 +80,7 @@ class Scanner
 		puts "\n START SCAN => #{@host}"
 		begin
 			@ports.each_with_index { |i, index| threads << Thread.new {
+				next if !i.is_a? Integer
 				socket = Socket.new Socket::AF_INET, Socket::SOCK_STREAM
 				addr = Socket.sockaddr_in(i, @host)
 
